@@ -1,6 +1,6 @@
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 1) {
-        rueda()
+        rueda1()
     } else if (receivedNumber == 2) {
         rueda2()
     } else if (receivedNumber == 3) {
@@ -14,34 +14,34 @@ radio.onReceivedNumber(function (receivedNumber) {
 function ruedas () {
     motorbit.freestyle(100, 100)
 }
+function rueda1 () {
+    motorbit.turnright(100)
+}
 function rueda2 () {
     motorbit.turnleft(100)
 }
-input.onButtonPressed(Button.A, function () {
-    if (true) {
+function ruedas2 () {
+    motorbit.brake()
+}
+radio.setGroup(555)
+basic.forever(function () {
+    if (input.buttonIsPressed(Button.A)) {
         radio.sendNumber(1)
     } else {
         radio.sendNumber(0)
     }
 })
-function rueda () {
-    motorbit.turnright(100)
-}
-input.onButtonPressed(Button.AB, function () {
-    if (true) {
-        radio.sendNumber(3)
-    } else {
-        radio.sendNumber(0)
-    }
-})
-input.onButtonPressed(Button.B, function () {
-    if (true) {
+basic.forever(function () {
+    if (input.buttonIsPressed(Button.B)) {
         radio.sendNumber(2)
     } else {
         radio.sendNumber(0)
     }
 })
-function ruedas2 () {
-    motorbit.brake()
-}
-radio.setGroup(555)
+basic.forever(function () {
+    if (input.buttonIsPressed(Button.AB)) {
+        radio.sendNumber(3)
+    } else {
+        radio.sendNumber(0)
+    }
+})
